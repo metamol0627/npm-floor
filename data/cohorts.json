@@ -1,0 +1,793 @@
+{
+ "schema": 1,
+ "tool": "npm-floor",
+ "generatedAt": "2026-09-18T12:23:36.303Z",
+ "method": {
+  "population": "npm registry search, 32 terms x 12 pages x 250 (unscoped names only)",
+  "conditions": "single version / no repository field / published at least 37 days before the run / not a placeholder by its own text / drip T < 3 per day / at most 3 packages per publish day / not the rest of a same-description batch whose members are in sustained use",
+  "exclusions": {
+   "placeholder": "name, description, keywords or version name matches /placeholder|dependency[ -]confusion|\\bsecurity\\b|\\breserved\\b|squat|do ?n['o]?t use|not for (public )?use|hackerone|-security\\b|-placeholder\\b|name reservation|proof[ -]of[ -]concept|\\bpoc\\b|intentionally (invalid|broken)|malicious/i (security / dependency-confusion placeholders, reserved names, typosquats, intentionally broken packages: they are targets of real traffic, not zero-user packages)",
+   "sustainedUse": "mean daily downloads on days 15..30 >= 3 (about 10x the cohort median; kept in the raw series with an 'excluded' mark, not in this table)",
+   "dayCluster": "more than 3 packages published on the same UTC day (practice uploads from one classroom are not independent)",
+   "descriptionCluster": "3 or more packages in one month with the same description of which at least half are in sustained use: one batch-published campaign, so the rest are excluded too (kept in the raw series with an 'excluded' mark)"
+  },
+  "series": "daily downloads from day -1 to day +45 relative to the publish day (UTC)",
+  "S": "sum of downloads on days 0..3 (4 days incl. the publish day) per package; median / p10 / p90 over the month's cohort",
+  "T": "mean daily downloads on days 15..30 per package; median / p10 / p90 over the month's cohort",
+  "w30": "sum of downloads on days 0..29 per package (the 30-day window from the publish day); median / p10 / p90",
+  "zeroDays": [
+   "2025-04-03",
+   "2025-04-21",
+   "2025-11-13",
+   "2025-11-15",
+   "2025-11-26",
+   "2025-11-30",
+   "2025-12-01",
+   "2025-12-24",
+   "2026-07-12",
+   "2026-08-14",
+   "2026-09-03"
+  ],
+  "zeroDaysNote": "UTC days on which npm's daily counts were 0 for the whole registry (0 across >= 10 series); removed from the denominators of S, T and w30",
+  "quantile": "linear interpolation between order statistics (R type 7)",
+  "perMonthTarget": 30,
+  "thinBelow": 5,
+  "sustainedUseT": 3,
+  "maxPerDay": 3,
+  "minDescriptionCluster": 3,
+  "excluded": {
+   "placeholder": 600,
+   "dayCluster": 110,
+   "sustainedUse": 25,
+   "descriptionCluster": 2
+  },
+  "flags": {
+   "thin": "fewer than 30 packages in the month (own values used)",
+   "interpolated": "fewer than 5 packages; values interpolated linearly from the nearest months with enough packages"
+  },
+  "ja": {
+   "population": "npm レジストリ検索 32 語 × 12 段 × 250 件（スコープ無しの名前のみ）",
+   "conditions": "単一版／repository 無し／実行日の 37 日以上前に公開／文面がプレースホルダでない／滴り T < 3 件/日／同じ公開日から 3 件まで／同じ文面の一括公開で仲間が使われ続けているものの残りでない"
+  },
+  "seed": 20260918,
+  "candidates": {
+   "searched": 51277,
+   "afterPrefilter": 1877,
+   "checked": 1877,
+   "measured": 590
+  }
+ },
+ "overall": {
+  "n": 563,
+  "S": {
+   "median": 64,
+   "p10": 49,
+   "p90": 107.80000000000001
+  },
+  "T": {
+   "median": 0.3125,
+   "p10": 0.125,
+   "p90": 0.625
+  },
+  "w30": {
+   "median": 75,
+   "p10": 62,
+   "p90": 127.78461538461539
+  }
+ },
+ "months": {
+  "2024-01": {
+   "n": 29,
+   "S": {
+    "median": 56,
+    "p10": 53,
+    "p90": 66.2
+   },
+   "T": {
+    "median": 0.25,
+    "p10": 0.125,
+    "p90": 0.375
+   },
+   "w30": {
+    "median": 65,
+    "p10": 60.8,
+    "p90": 74.2
+   },
+   "peak": {
+    "median": 44,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2024-02": {
+   "n": 26,
+   "S": {
+    "median": 60,
+    "p10": 54,
+    "p90": 68.5
+   },
+   "T": {
+    "median": 0.3125,
+    "p10": 0.1875,
+    "p90": 0.4375
+   },
+   "w30": {
+    "median": 71.5,
+    "p10": 65,
+    "p90": 85
+   },
+   "peak": {
+    "median": 49,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2024-03": {
+   "n": 24,
+   "S": {
+    "median": 55.5,
+    "p10": 47.3,
+    "p90": 63.7
+   },
+   "T": {
+    "median": 0.375,
+    "p10": 0.25,
+    "p90": 0.4375
+   },
+   "w30": {
+    "median": 65,
+    "p10": 58.3,
+    "p90": 73
+   },
+   "peak": {
+    "median": 44,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2024-04": {
+   "n": 24,
+   "S": {
+    "median": 50,
+    "p10": 44.6,
+    "p90": 56.7
+   },
+   "T": {
+    "median": 0.3125,
+    "p10": 0.25,
+    "p90": 0.375
+   },
+   "w30": {
+    "median": 63,
+    "p10": 57,
+    "p90": 68.7
+   },
+   "peak": {
+    "median": 39,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2024-05": {
+   "n": 23,
+   "S": {
+    "median": 49,
+    "p10": 43.4,
+    "p90": 62
+   },
+   "T": {
+    "median": 0.3125,
+    "p10": 0.1875,
+    "p90": 0.4375
+   },
+   "w30": {
+    "median": 64,
+    "p10": 58,
+    "p90": 74.8
+   },
+   "peak": {
+    "median": 36,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2024-06": {
+   "n": 18,
+   "S": {
+    "median": 50.5,
+    "p10": 46.7,
+    "p90": 61.3
+   },
+   "T": {
+    "median": 0.3125,
+    "p10": 0.25,
+    "p90": 0.4375
+   },
+   "w30": {
+    "median": 64,
+    "p10": 60,
+    "p90": 73.3
+   },
+   "peak": {
+    "median": 30.5,
+    "day": 1
+   },
+   "flag": "thin"
+  },
+  "2024-07": {
+   "n": 22,
+   "S": {
+    "median": 60,
+    "p10": 50.1,
+    "p90": 68
+   },
+   "T": {
+    "median": 0.5,
+    "p10": 0.25,
+    "p90": 0.6187500000000001
+   },
+   "w30": {
+    "median": 77,
+    "p10": 63.5,
+    "p90": 83.9
+   },
+   "peak": {
+    "median": 50.5,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2024-08": {
+   "n": 17,
+   "S": {
+    "median": 53,
+    "p10": 49,
+    "p90": 73
+   },
+   "T": {
+    "median": 0.3125,
+    "p10": 0.1875,
+    "p90": 0.4
+   },
+   "w30": {
+    "median": 72,
+    "p10": 63.2,
+    "p90": 84.8
+   },
+   "peak": {
+    "median": 45,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2024-09": {
+   "n": 21,
+   "S": {
+    "median": 66,
+    "p10": 58,
+    "p90": 71
+   },
+   "T": {
+    "median": 0.1875,
+    "p10": 0.0625,
+    "p90": 0.3125
+   },
+   "w30": {
+    "median": 77,
+    "p10": 69,
+    "p90": 83
+   },
+   "peak": {
+    "median": 52,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2024-10": {
+   "n": 12,
+   "S": {
+    "median": 64.5,
+    "p10": 61.2,
+    "p90": 71.4
+   },
+   "T": {
+    "median": 0.1875,
+    "p10": 0.125,
+    "p90": 0.25
+   },
+   "w30": {
+    "median": 73,
+    "p10": 70.1,
+    "p90": 86.6
+   },
+   "peak": {
+    "median": 58,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2024-11": {
+   "n": 17,
+   "S": {
+    "median": 64,
+    "p10": 58.8,
+    "p90": 68
+   },
+   "T": {
+    "median": 0.25,
+    "p10": 0.125,
+    "p90": 0.4
+   },
+   "w30": {
+    "median": 73,
+    "p10": 67,
+    "p90": 78.4
+   },
+   "peak": {
+    "median": 55,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2024-12": {
+   "n": 28,
+   "S": {
+    "median": 64,
+    "p10": 59,
+    "p90": 70.3
+   },
+   "T": {
+    "median": 0.375,
+    "p10": 0.25,
+    "p90": 0.51875
+   },
+   "w30": {
+    "median": 76,
+    "p10": 71.7,
+    "p90": 85.5
+   },
+   "peak": {
+    "median": 57.5,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-01": {
+   "n": 21,
+   "S": {
+    "median": 64,
+    "p10": 61,
+    "p90": 67
+   },
+   "T": {
+    "median": 0.4375,
+    "p10": 0.125,
+    "p90": 0.75
+   },
+   "w30": {
+    "median": 78,
+    "p10": 73,
+    "p90": 84
+   },
+   "peak": {
+    "median": 57,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-02": {
+   "n": 16,
+   "S": {
+    "median": 62.5,
+    "p10": 55.5,
+    "p90": 71.5
+   },
+   "T": {
+    "median": 0.1875,
+    "p10": 0.125,
+    "p90": 0.28125
+   },
+   "w30": {
+    "median": 68,
+    "p10": 64,
+    "p90": 82
+   },
+   "peak": {
+    "median": 52,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-03": {
+   "n": 17,
+   "S": {
+    "median": 59,
+    "p10": 48.6,
+    "p90": 66
+   },
+   "T": {
+    "median": 0.3333333333333333,
+    "p10": 0.13916666666666666,
+    "p90": 0.6266666666666667
+   },
+   "w30": {
+    "median": 72.41379310344827,
+    "p10": 65.32413793103449,
+    "p90": 84.5615763546798
+   },
+   "peak": {
+    "median": 51,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-04": {
+   "n": 10,
+   "S": {
+    "median": 52,
+    "p10": 34.1,
+    "p90": 58.9
+   },
+   "T": {
+    "median": 0.6875,
+    "p10": 0.5,
+    "p90": 0.95
+   },
+   "w30": {
+    "median": 75.77586206896552,
+    "p10": 61.4551724137931,
+    "p90": 86.29655172413793
+   },
+   "peak": {
+    "median": 31,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-05": {
+   "n": 11,
+   "S": {
+    "median": 50,
+    "p10": 43,
+    "p90": 54
+   },
+   "T": {
+    "median": 0.5625,
+    "p10": 0.4375,
+    "p90": 0.875
+   },
+   "w30": {
+    "median": 67,
+    "p10": 62,
+    "p90": 72
+   },
+   "peak": {
+    "median": 41,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-06": {
+   "n": 22,
+   "S": {
+    "median": 50,
+    "p10": 45.1,
+    "p90": 55.900000000000006
+   },
+   "T": {
+    "median": 0.5,
+    "p10": 0.25625,
+    "p90": 0.625
+   },
+   "w30": {
+    "median": 70.5,
+    "p10": 64.1,
+    "p90": 76.9
+   },
+   "peak": {
+    "median": 45,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-07": {
+   "n": 14,
+   "S": {
+    "median": 65.5,
+    "p10": 60.3,
+    "p90": 69
+   },
+   "T": {
+    "median": 0.3125,
+    "p10": 0.14375,
+    "p90": 0.35625000000000007
+   },
+   "w30": {
+    "median": 75.5,
+    "p10": 68.2,
+    "p90": 80.5
+   },
+   "peak": {
+    "median": 59,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-08": {
+   "n": 27,
+   "S": {
+    "median": 66,
+    "p10": 60.6,
+    "p90": 70.4
+   },
+   "T": {
+    "median": 0.1875,
+    "p10": 0.1,
+    "p90": 0.4625000000000008
+   },
+   "w30": {
+    "median": 75,
+    "p10": 69.2,
+    "p90": 84.4
+   },
+   "peak": {
+    "median": 61,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-09": {
+   "n": 17,
+   "S": {
+    "median": 69,
+    "p10": 65,
+    "p90": 72.8
+   },
+   "T": {
+    "median": 0.1875,
+    "p10": 0.125,
+    "p90": 0.375
+   },
+   "w30": {
+    "median": 76,
+    "p10": 74,
+    "p90": 82
+   },
+   "peak": {
+    "median": 60,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-10": {
+   "n": 22,
+   "S": {
+    "median": 75,
+    "p10": 10.000000000000005,
+    "p90": 96.80000000000001
+   },
+   "T": {
+    "median": 0.10096153846153846,
+    "p10": 0.07142857142857142,
+    "p90": 0.1875
+   },
+   "w30": {
+    "median": 82.5,
+    "p10": 20.700000000000003,
+    "p90": 108.96428571428572
+   },
+   "peak": {
+    "median": 67.5,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-11": {
+   "n": 9,
+   "S": {
+    "median": 90,
+    "p10": 83.2,
+    "p90": 108
+   },
+   "T": {
+    "median": 0.15384615384615385,
+    "p10": 0.06153846153846154,
+    "p90": 0.5466666666666667
+   },
+   "w30": {
+    "median": 118.88888888888889,
+    "p10": 107.76,
+    "p90": 134.48888888888888
+   },
+   "peak": {
+    "median": 85,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2025-12": {
+   "n": 16,
+   "S": {
+    "median": 89,
+    "p10": 87,
+    "p90": 99
+   },
+   "T": {
+    "median": 0.2895833333333333,
+    "p10": 0.19375,
+    "p90": 0.46875
+   },
+   "w30": {
+    "median": 103.44827586206895,
+    "p10": 99.82758620689654,
+    "p90": 115.39655172413794
+   },
+   "peak": {
+    "median": 81,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2026-01": {
+   "n": 13,
+   "S": {
+    "median": 85,
+    "p10": 74.2,
+    "p90": 99.80000000000001
+   },
+   "T": {
+    "median": 0.3125,
+    "p10": 0.2,
+    "p90": 0.375
+   },
+   "w30": {
+    "median": 103,
+    "p10": 87.2,
+    "p90": 118.4
+   },
+   "peak": {
+    "median": 73,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2026-02": {
+   "n": 14,
+   "S": {
+    "median": 86.5,
+    "p10": 79.2,
+    "p90": 103.20000000000002
+   },
+   "T": {
+    "median": 0.1875,
+    "p10": 0.125,
+    "p90": 0.25
+   },
+   "w30": {
+    "median": 98.5,
+    "p10": 89.5,
+    "p90": 115.30000000000001
+   },
+   "peak": {
+    "median": 76.5,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2026-03": {
+   "n": 11,
+   "S": {
+    "median": 91,
+    "p10": 88,
+    "p90": 105
+   },
+   "T": {
+    "median": 0.4375,
+    "p10": 0.25,
+    "p90": 0.625
+   },
+   "w30": {
+    "median": 109,
+    "p10": 99,
+    "p90": 126
+   },
+   "peak": {
+    "median": 78,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2026-04": {
+   "n": 9,
+   "S": {
+    "median": 116,
+    "p10": 93.6,
+    "p90": 126
+   },
+   "T": {
+    "median": 0.5,
+    "p10": 0.375,
+    "p90": 0.925
+   },
+   "w30": {
+    "median": 128,
+    "p10": 112,
+    "p90": 148.4
+   },
+   "peak": {
+    "median": 99,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2026-05": {
+   "n": 17,
+   "S": {
+    "median": 131,
+    "p10": 110.2,
+    "p90": 152.8
+   },
+   "T": {
+    "median": 0.5625,
+    "p10": 0.25,
+    "p90": 0.775
+   },
+   "w30": {
+    "median": 146,
+    "p10": 129.6,
+    "p90": 178
+   },
+   "peak": {
+    "median": 117,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2026-06": {
+   "n": 14,
+   "S": {
+    "median": 124.5,
+    "p10": 42.10000000000001,
+    "p90": 139.9
+   },
+   "T": {
+    "median": 0.7666666666666666,
+    "p10": 0.5420833333333334,
+    "p90": 1.19375
+   },
+   "w30": {
+    "median": 143.9310344827586,
+    "p10": 68.19310344827588,
+    "p90": 162.41379310344828
+   },
+   "peak": {
+    "median": 113.5,
+    "day": 0
+   },
+   "flag": "thin"
+  },
+  "2026-07": {
+   "n": 22,
+   "S": {
+    "median": 130,
+    "p10": 23.500000000000004,
+    "p90": 155.90000000000003
+   },
+   "T": {
+    "median": 0.6666666666666666,
+    "p10": 0.33749999999999997,
+    "p90": 0.9370833333333334
+   },
+   "w30": {
+    "median": 156.20689655172413,
+    "p10": 41.17241379310345,
+    "p90": 178.6551724137931
+   },
+   "peak": {
+    "median": 109.5,
+    "day": 0
+   },
+   "flag": "thin"
+  }
+ }
+}

@@ -1,0 +1,9 @@
+# 有償のデータセット（scripts/build_dataset.mjs で out/calibrate-*/ から再生成できる）
+dist/
+# テストが作る一時ディレクトリ
+tests/tmp/
+# calibrate の途中経過（候補の名簿と照合結果。数 MB。series.json と cohorts.json と log は残す）
+out/calibrate-*/search.json
+out/calibrate-*/checked.json
+node_modules/
+package-lock.json

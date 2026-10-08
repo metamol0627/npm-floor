@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "tool": "npm-floor",
+  "generatedAt": "2026-01-01T00:00:00.000Z",
+  "note": "SYNTHETIC table for tests only (known answers). Not measured data. The shipped table is data/cohorts.json.",
+  "method": { "population": "synthetic", "conditions": "synthetic" },
+  "overall": { "n": 90, "S": { "median": 60, "p10": 30, "p90": 120 }, "T": { "median": 0.4, "p10": 0.1, "p90": 0.8 }, "w30": { "median": 75, "p10": 40, "p90": 150 } },
+  "months": {
+    "2026-06": { "n": 30, "S": { "median": 50, "p10": 25, "p90": 100 }, "T": { "median": 0.3, "p10": 0.1, "p90": 0.6 }, "w30": { "median": 60, "p10": 30, "p90": 120 }, "flag": null },
+    "2026-07": { "n": 30, "S": { "median": 60, "p10": 30, "p90": 120 }, "T": { "median": 0.4, "p10": 0.1, "p90": 0.8 }, "w30": { "median": 75, "p10": 40, "p90": 150 }, "flag": null },
+    "2026-08": { "n": 4, "S": { "median": 70, "p10": 35, "p90": 140 }, "T": { "median": 0.5, "p10": 0.1, "p90": 1.0 }, "w30": { "median": 90, "p10": 50, "p90": 180 }, "flag": "interpolated" }
+  }
+}

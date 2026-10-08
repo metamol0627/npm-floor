@@ -1,0 +1,59 @@
+{
+  "name": "npm-floor",
+  "version": "0.1.1",
+  "homepage": "https://lab-cws.pages.dev/npm-floor/",
+  "_homepageNote": "npm のパッケージページの右側に出る唯一のリンク欄。公開リポジトリは未作成（404 を出さないので repository/bugs は入れない）。0.1.0 の README には販売ページの URL が 1 箇所も無く、npm から購入ページへ渡る橋が存在しなかった（判断監査 J-SHIP-BOTTLENECK 指摘1・2026-09-30）。",
+  "description": "How many downloads would your package get if nobody used it? Tells you that number (the floor: mirrors, CI caches, security scanners) and whether your actual count stands out from it. — 利用者ゼロでも付く DL は何件か。自分のパッケージはそれを超えているか。",
+  "keywords": [
+    "npm",
+    "downloads",
+    "download-count",
+    "download-stats",
+    "bots",
+    "mirrors",
+    "scanners",
+    "baseline",
+    "floor",
+    "version-pumping",
+    "supply-chain",
+    "statistics"
+  ],
+  "license": "MIT",
+  "author": "metamol0627",
+  "type": "module",
+  "bin": {
+    "npm-floor": "bin/npm-floor.mjs"
+  },
+  "main": "lib/floor.mjs",
+  "exports": {
+    ".": "./lib/floor.mjs",
+    "./api": "./lib/api.mjs",
+    "./calibrate": "./lib/calibrate.mjs",
+    "./dates": "./lib/dates.mjs",
+    "./cohorts": "./data/cohorts.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "data/cohorts.json",
+    "docs/method.md",
+    "docs/field-log.md",
+    "README.md",
+    "README.ja.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "calibrate": "node bin/npm-floor.mjs calibrate",
+    "build:dataset": "node scripts/build_dataset.mjs",
+    "fieldlog": "node scripts/field_log.mjs",
+    "demo": "node scripts/readme_demo.mjs",
+    "check:claims": "node scripts/check_claims.mjs",
+    "check:sale": "node ../../scripts/check_sale_status.mjs npm-floor"
+  },
+  "dependencies": {}
+}
